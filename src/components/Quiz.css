@@ -5,11 +5,7 @@
 }
 
 .quiz-body {
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    row-gap: 65px; */
+    padding: 10px;
     height: 756px;
     width: 390px;
     box-sizing: border-box;
