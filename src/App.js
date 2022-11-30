@@ -2,7 +2,7 @@ import "./App.css";
 import Quiz from "./components/Quiz";
 import StartPage from "./components/StartPage";
 import QuestionPage from "./components/QuestionPage";
-
+import React from "react";
 function App() {
   const questions = [
     {
@@ -42,10 +42,24 @@ function App() {
       ],
     },
   ];
+  const [gameStarted, setGameStarted] = React.useState(false);
+  const [currentQuestion, setCurrentQuestion] = React.useState(null);
+  function startGame() {
+    setGameStarted((prev) => !prev);
+
+    setCurrentQuestion(() => 0);
+  }
   return (
     <div className="App">
       <Quiz>
-        <QuestionPage questions={questions[0]} />
+        {!gameStarted && <StartPage OnGameStart={startGame} />}
+        {gameStarted && (
+          <QuestionPage
+            questions={questions[currentQuestion]}
+            currentQuestion={currentQuestion}
+            questionsNumber={questions.length}
+          />
+        )}
       </Quiz>
     </div>
   );

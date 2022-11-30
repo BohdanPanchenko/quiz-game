@@ -1,8 +1,16 @@
 import "./QuestionPage.css";
+import React, { useEffect } from "react";
 const QuestionPage = (props) => {
+  const [progressBarLength, setProgressBarLength] = React.useState(null);
+  useEffect(() => {
+    setProgressBarLength(
+      () => (props.questionsNumber / (props.currentQuestion + 1)) * 10
+    );
+  }, []);
   return (
     <div className="question-container">
       <div className="question-timer">
+        <div className="countdown-number">30</div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
@@ -15,6 +23,7 @@ const QuestionPage = (props) => {
               <stop offset="100%" stopColor="#673ab7" />
             </linearGradient>
           </defs>
+
           <circle cx="54" cy="54" r="50" strokeLinecap="round" />
         </svg>
       </div>
@@ -33,10 +42,10 @@ const QuestionPage = (props) => {
       </ul>
       <div className="question-progress">
         <div className="question-number">
-          {props.currentQuestion + " of " + props.questions.length}
+          {props.currentQuestion + " of " + props.questionsNumber}
         </div>
-        <div className="progress-bar" style={{ width: props.stage }}>
-          <span></span>
+        <div className="progress-bar">
+          <span style={{ width: progressBarLength + "%" }}></span>
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ li {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     row-gap: 15px;
     height: 100%;
 }
@@ -46,7 +46,7 @@ li {
     border: none;
     padding: 8px 15px;
     /* background-color: #e68131; */
-    background-color: #fff;
+    background-color: #ccdde7;
     display: flex;
     align-items: center;
     column-gap: 15px;
@@ -89,7 +89,7 @@ li {
 
 .option-item:hover span {
 
-    background-color: #fff;
+    background-color: #ccdde7;
     color: #e68131;
     transform: translateX(215px);
 
@@ -99,7 +99,10 @@ li {
 
 .question-progress span {}
 
-.question-number {}
+.question-number {
+    color: #ccdde7;
+    margin-bottom: 15px;
+}
 
 .progress-bar {
     width: 90%;
@@ -111,10 +114,14 @@ li {
 
 .progress-bar span {
     display: block;
-    width: 10%;
+    /* width: 10%; */
     height: 10px;
     background-color: #e68131;
     border-radius: 8px;
+}
+
+.question-timer {
+    position: relative;
 }
 
 svg circle {
@@ -123,10 +130,32 @@ svg circle {
 
 
     fill: none;
-    stroke-width: 4px;
+    stroke-width: 5px;
 
     stroke-dasharray: 314;
     stroke: rgb(248, 0, 0);
-    transform: rotateY(180deg);
+    stroke: #ccdde7;
+    transform: rotateY(180deg) rotateX(180deg) rotate(90deg);
     /* stroke-dashoffset: 314; */
+    animation: 30s countdown linear;
+
+}
+
+.countdown-number {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 30px;
+    color: #ccdde7;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+@keyframes countdown {
+    0% {
+        stroke-dashoffset: 314;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
 }
