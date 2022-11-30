@@ -1,0 +1,29 @@
+.start-page-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.start-img {}
+
+.btn {
+    appearance: none;
+    border: none;
+    padding: 20px;
+    background-color: #e68131;
+    display: block;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 8px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.start-btn {}

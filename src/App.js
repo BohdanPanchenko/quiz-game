@@ -1,23 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Quiz from "./components/Quiz";
+import StartPage from "./components/StartPage";
+import QuestionPage from "./components/QuestionPage";
 
 function App() {
+  const questions = [
+    {
+      question: "Lorem asd asda sasd da  s",
+      options: [
+        { marker: "A", content: "asdadadadsda", isCorrect: true },
+        { marker: "B", content: "asdadadadsda", isCorrect: false },
+        { marker: "C", content: "asdadadadsda", isCorrect: false },
+        { marker: "D", content: "asdadadadsda", isCorrect: false },
+      ],
+    },
+    {
+      question: "Lorem asd asda sasd da  s",
+      options: [
+        { marker: "A", content: "asdadadadsda", isCorrect: true },
+        { marker: "B", content: "asdadadadsda", isCorrect: false },
+        { marker: "C", content: "asdadadadsda", isCorrect: false },
+        { marker: "D", content: "asdadadadsda", isCorrect: false },
+      ],
+    },
+    {
+      question: "Lorem asd asda sasd da  s",
+      options: [
+        { marker: "A", content: "asdadadadsda", isCorrect: true },
+        { marker: "B", content: "asdadadadsda", isCorrect: false },
+        { marker: "C", content: "asdadadadsda", isCorrect: false },
+        { marker: "D", content: "asdadadadsda", isCorrect: false },
+      ],
+    },
+    {
+      question: "Lorem asd asda sasd da  s",
+      options: [
+        { marker: "A", content: "asdadadadsda", isCorrect: true },
+        { marker: "B", content: "asdadadadsda", isCorrect: false },
+        { marker: "C", content: "asdadadadsda", isCorrect: false },
+        { marker: "D", content: "asdadadadsda", isCorrect: false },
+      ],
+    },
+  ];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Quiz>
+        <QuestionPage questions={questions[0]} />
+      </Quiz>
     </div>
   );
 }
