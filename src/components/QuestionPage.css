@@ -91,10 +91,12 @@ li {
 
     background-color: #ccdde7;
     color: #e68131;
-    transform: translateX(215px);
+    /* transform: translateX(215px); */
 
 }
-
+.option-item.selected span{
+    transform: translateX(215px);
+}
 .question-progress {}
 
 .question-progress span {}

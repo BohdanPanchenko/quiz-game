@@ -42,7 +42,7 @@ const QuestionPage = (props) => {
       </ul>
       <div className="question-progress">
         <div className="question-number">
-          {props.currentQuestion + " of " + props.questionsNumber}
+          {props.currentQuestion + 1 + " of " + props.questionsNumber}
         </div>
         <div className="progress-bar">
           <span style={{ width: progressBarLength + "%" }}></span>
