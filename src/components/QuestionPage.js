@@ -4,11 +4,11 @@ const QuestionPage = (props) => {
   const [progressBarLength, setProgressBarLength] = React.useState(null);
   useEffect(() => {
     setProgressBarLength(
-      () => (props.questionsNumber / (props.currentQuestion + 1)) * 10
+      () => ((props.currentQuestion + 1) * 100) / props.questionsNumber
     );
   }, []);
   return (
-    <div className="question-container">
+    <div className="question-container" style={{ zIndex: props.zIndex }}>
       <div className="question-timer">
         <div className="countdown-number">30</div>
         <svg

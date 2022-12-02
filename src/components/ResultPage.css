@@ -1,0 +1,68 @@
+.result-page-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.result-percentage {
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+
+}
+
+.percentage-circle {
+    position: relative;
+}
+
+.percentage-circle img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100px;
+    transform: translateX(-50%) translateY(-50%);
+    animation: fade-in 1s linear;
+    animation-delay: 4.8s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.percentage-circle circle {
+    transform-origin: center;
+    fill: none;
+    stroke-width: 17px;
+    stroke: #1e90ff;
+    animation: countdown 5s linear;
+    stroke-dasharray: 628;
+    stroke-dashoffset: 628;
+    transition: 5s linear;
+}
+
+.percentage-number {
+    color: #ccdde7;
+    font-size: 34px;
+    font-weight: 700;
+
+}
+
+/* @keyframes countdown {
+    0% {
+        stroke-dashoffset: 628;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+} */

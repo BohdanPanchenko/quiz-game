@@ -1,6 +1,7 @@
 import "./Quiz.css";
 import StartPage from "./StartPage";
 import QuestionPage from "./QuestionPage";
+import ResultPage from "./ResultPage";
 import React from "react";
 const Quiz = (props) => {
   const questions = [
@@ -42,6 +43,7 @@ const Quiz = (props) => {
     },
   ];
   const [gameStarted, setGameStarted] = React.useState(false);
+  const [gameFinished, setGamefinished] = React.useState(false);
   const [currentQuestion, setCurrentQuestion] = React.useState(null);
 
   function startGame() {
@@ -54,12 +56,22 @@ const Quiz = (props) => {
         <div className="quiz-body">
           {!gameStarted && <StartPage OnGameStart={startGame} />}
           {gameStarted && (
-            <QuestionPage
-              questions={questions[currentQuestion]}
-              currentQuestion={currentQuestion}
-              questionsNumber={questions.length}
-            />
+            <>
+              <QuestionPage
+                questions={questions[currentQuestion]}
+                currentQuestion={currentQuestion}
+                questionsNumber={questions.length}
+                zIndex={10}
+              />
+              <QuestionPage
+                questions={questions[currentQuestion + 1]}
+                currentQuestion={currentQuestion + 1}
+                questionsNumber={questions.length}
+                zIndex={1}
+              />
+            </>
           )}
+          {!gameStarted && gameFinished && <ResultPage />}
         </div>
       </div>
     </div>
