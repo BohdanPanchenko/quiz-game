@@ -104,6 +104,12 @@ const Quiz = (props) => {
   function checkIfTimeIsUp() {
     setTimeIsUp(() => true);
   }
+  function restartGame() {
+    setGameStarted(() => true);
+    setGameFinished(() => false);
+    setCurrentQuestion(() => 0);
+    setScore(() => 0);
+  }
   return (
     <div className="quiz-wrapper">
       <div className="quiz">
@@ -118,24 +124,16 @@ const Quiz = (props) => {
                 currentQuestion={currentQuestion}
                 questionsNumber={questions.length}
                 nextQuestion={getToTheNextQuestion}
-                counterStarted={true}
-                zIndex={10}
                 checkTimer={checkIfTimeIsUp}
               />
-              {currentQuestion < questions.length - 2 && (
-                <QuestionPage
-                  question={questions[currentQuestion + 1]}
-                  currentQuestion={currentQuestion + 1}
-                  questionsNumber={questions.length}
-                  nextQuestion={getToTheNextQuestion}
-                  counterStarted={false}
-                  zIndex={1}
-                />
-              )}
             </>
           )}
           {!gameStarted && gameFinished && (
-            <ResultPage score={score} questionsNumber={questions.length} />
+            <ResultPage
+              score={score}
+              questionsNumber={questions.length}
+              restartGame={restartGame}
+            />
           )}
         </div>
       </div>

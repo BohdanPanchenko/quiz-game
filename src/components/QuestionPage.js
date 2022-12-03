@@ -1,30 +1,35 @@
 import "./QuestionPage.css";
 import React, { useEffect } from "react";
 const QuestionPage = (props) => {
-  const [counterStarted, setCounterStarted] = React.useState(false);
   const [selectedButtonIndex, setSelectedButtonIndex] = React.useState(null);
   const progressBarLength =
     ((props.currentQuestion + 1) * 100) / props.questionsNumber;
-  const [countDownTimer, setCountDownTimer] = React.useState(30);
+  const [countDownTimer, setCountDownTimer] = React.useState(20);
   const [timerId, setTimerId] = React.useState(null);
+  const [animationRestart, setAnimationRestart] = React.useState(false);
   useEffect(() => {
-    if (props.counterStarted) {
-      let localTimerId = setInterval(() => {
-        setCountDownTimer((prev) => prev - 1);
-      }, 1000);
-      setTimerId(() => localTimerId);
-    } //
+    let localTimerId = setInterval(() => {
+      setCountDownTimer((prev) => prev - 1);
+    }, 1000);
+    setTimerId(() => localTimerId);
   }, []);
   useEffect(() => {
     if (countDownTimer === 0) {
-      clearInterval(timerId);
       props.checkTimer();
-      setCountDownTimer(() => 30);
+      setCountDownTimer(() => 20);
+      setTimeout(() => {
+        resetCircleAnimation();
+      }, 100);
     }
   }, [countDownTimer]);
-
+  function resetCircleAnimation() {
+    setAnimationRestart((prev) => !prev);
+    setTimeout(() => {
+      setAnimationRestart((prev) => !prev);
+    }, 0);
+  }
   return (
-    <div className="question-container" style={{ zIndex: props.zIndex }}>
+    <div className="question-container">
       <div className="question-timer">
         <div className="countdown-number">{countDownTimer}</div>
         <svg
@@ -40,7 +45,13 @@ const QuestionPage = (props) => {
             </linearGradient>
           </defs>
 
-          <circle cx="54" cy="54" r="50" strokeLinecap="round" />
+          <circle
+            cx="54"
+            cy="54"
+            r="50"
+            strokeLinecap="round"
+            style={{ animation: animationRestart ? "none" : "" }}
+          />
         </svg>
       </div>
       <div className="question-body">{props.question.question}</div>
@@ -50,14 +61,11 @@ const QuestionPage = (props) => {
             <li key={index}>
               <button
                 type="button"
-                className={
-                  selectedButtonIndex !== index
-                    ? "option-item"
-                    : "option-item selected"
-                }
+                className="option-item"
                 onClick={(e) => {
+                  resetCircleAnimation();
                   setSelectedButtonIndex(() => index);
-                  setCountDownTimer(() => 30);
+                  setCountDownTimer(() => 20);
                   if (props.question.options[index].isCorrect) {
                     props.nextQuestion(true);
                   } else props.nextQuestion(false);

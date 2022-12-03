@@ -23,10 +23,10 @@
     top: 50%;
     width: 100px;
     transform: translateX(-50%) translateY(-50%);
-    animation: fade-in 2s linear;
+    /* animation: fade-in 2s linear;
     animation-delay: 1s;
     animation-fill-mode: forwards;
-    opacity: 0;
+    opacity: 0; */
 }
 
 @keyframes fade-in {
@@ -59,12 +59,24 @@
 
 }
 
-/* @keyframes countdown {
-    0% {
-        stroke-dashoffset: 628;
-    }
+.restart-btn {
+    appearance: none;
+    border: none;
+    padding: 15px;
+    background-color: #e68131;
+    display: block;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 8px;
+    transition: 0.5s;
+    cursor: pointer;
+    margin-top: 25px;
+}
 
-    100% {
-        stroke-dashoffset: 0;
-    }
-} */
+.restart-btn:hover {
+    opacity: 0.8;
+}

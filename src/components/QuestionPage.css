@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
 }
 
 ol,
@@ -27,9 +28,6 @@ li {
     background-color: #23293f;
 }
 
-.question-container.out {
-    animation: slide-left 1s linear;
-}
 
 .question-timer {}
 
@@ -116,9 +114,6 @@ li {
     color: #e68131;
 }
 
-.question-progress {}
-
-.question-progress span {}
 
 .question-number {
     color: #ccdde7;
@@ -135,7 +130,6 @@ li {
 
 .progress-bar span {
     display: block;
-    /* width: 10%; */
     height: 10px;
     background-color: #e68131;
     border-radius: 8px;
@@ -148,14 +142,14 @@ li {
 .question-timer svg circle {
     transform-origin: center;
     fill: none;
-    stroke-width: 5px;
+    stroke-width: 7px;
     stroke-dasharray: 314;
+    stroke-dashoffset: 314;
     stroke: rgb(248, 0, 0);
     stroke: #ccdde7;
     transform: rotateY(180deg) rotateX(180deg) rotate(90deg);
-    /* stroke-dashoffset: 314; */
-    animation: 30s countdown linear;
-    animation-play-state: paused;
+    animation: 20s countdown linear;
+
 
 }
 
@@ -171,22 +165,24 @@ li {
 @keyframes countdown {
     0% {
         stroke-dashoffset: 314;
+
     }
 
     100% {
         stroke-dashoffset: 0;
+
     }
 }
 
 @keyframes slide-left {
     0% {
-        transform: translateX(0);
-        opacity: 1;
+        left: 0;
+
     }
 
     0% {
-        transform: translateX(-100%);
-        opacity: 0.2;
+        left: -100%;
+
     }
 }
 

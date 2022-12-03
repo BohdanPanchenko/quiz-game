@@ -40,10 +40,6 @@ const ResultPage = (props) => {
               cy="100"
               r="90"
               strokeLinecap="round"
-              // strokeDasharray={565}
-              // strokeDashoffset={strokeLength}
-              // strokeDasharray={circleLength}
-              // strokeDashoffset={strokeLength}
               strokeDasharray={strokeDasharray}
               strokeDashoffset={strokeDashoffset}
               stroke={getColor(scorePercentage)}
@@ -52,6 +48,9 @@ const ResultPage = (props) => {
         </div>
         <div className="percentage-number">{scorePercentage + "% Score"}</div>
       </div>
+      <button className="restart-btn" onClick={props.restartGame} type="button">
+        Restart
+      </button>
     </div>
   );
 };
