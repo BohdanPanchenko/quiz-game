@@ -1,8 +1,23 @@
 import React from "react";
 import "./ResultPage.css";
 const ResultPage = (props) => {
-  const circleWidth = 2 * Math.PI * 45;
-  const strokeWidth = (props.score / 10) * circleWidth;
+  const scorePercentage = Math.round(
+    (props.score * 100) / props.questionsNumber
+  );
+  const circleLength = 2 * Math.PI * 90;
+  const [strokeDashoffset, setStrokeDashoffset] = React.useState(circleLength);
+  const [strokeDasharray, setStrokeDasharray] = React.useState(circleLength);
+  function getColor(percentage) {
+    if (percentage < 25) return "#ff0000";
+    else if (percentage > 25 && percentage < 50) return "#ffd600";
+    else if (percentage > 50 && percentage < 75) return "#8fe964";
+    else return "#3eab00";
+  }
+  React.useEffect(() => {
+    setStrokeDashoffset(
+      () => circleLength - (circleLength * scorePercentage) / 100
+    );
+  }, []);
   return (
     <div className="result-page-container">
       <div className="result-percentage">
@@ -25,11 +40,17 @@ const ResultPage = (props) => {
               cy="100"
               r="90"
               strokeLinecap="round"
-              strokeDashoffset={String(strokeWidth)}
+              // strokeDasharray={565}
+              // strokeDashoffset={strokeLength}
+              // strokeDasharray={circleLength}
+              // strokeDashoffset={strokeLength}
+              strokeDasharray={strokeDasharray}
+              strokeDashoffset={strokeDashoffset}
+              stroke={getColor(scorePercentage)}
             />
           </svg>
         </div>
-        <div className="percentage-number">{props.score * 10 + "% Score"}</div>
+        <div className="percentage-number">{scorePercentage + "% Score"}</div>
       </div>
     </div>
   );

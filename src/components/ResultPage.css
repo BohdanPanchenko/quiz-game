@@ -23,8 +23,8 @@
     top: 50%;
     width: 100px;
     transform: translateX(-50%) translateY(-50%);
-    animation: fade-in 1s linear;
-    animation-delay: 4.8s;
+    animation: fade-in 2s linear;
+    animation-delay: 1s;
     animation-fill-mode: forwards;
     opacity: 0;
 }
@@ -41,17 +41,19 @@
 
 .percentage-circle circle {
     transform-origin: center;
-    fill: none;
+    fill: #f0f8ff;
     stroke-width: 17px;
-    stroke: #1e90ff;
-    animation: countdown 5s linear;
-    stroke-dasharray: 628;
-    stroke-dashoffset: 628;
-    transition: 5s linear;
+    /* stroke: #1e90ff; */
+    /* animation: countdown 5s linear; */
+    /* stroke-dasharray: 565;
+    stroke-dashoffset: 565; */
+    transition: 3s linear;
+    transform: rotate(-84deg);
+
 }
 
 .percentage-number {
-    color: #ccdde7;
+    color: #f0f8ff;
     font-size: 34px;
     font-weight: 700;
 
